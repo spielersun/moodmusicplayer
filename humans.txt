@@ -1,0 +1,10 @@
+/* TEAM */
+	Design: Gunes Eser
+	Development: Gunes Eser
+	From: Istanbul, Turkey	
+    
+/* SITE */
+	Last update: 2015/04/19
+	Language: English
+	Doctype: HTML5
+	IDE: Brackets, Git, Photoshop

@@ -1,0 +1,187 @@
+@import "_fonts"
+@import "_player"
+
+//////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////// Variables
+
+$color-dark:#000000
+
+$font-text:'century_gothic'
+$font-text-bold:'century_gothicbold'
+$font-curvy:'open_sansregular'
+$font-curvy-light:'open_sanslight'
+$font-headline-light:'oswaldlight'
+$font-headline:'oswald_regularregular'
+$font-headline-medium:'oswaldmedium'
+
+$font-size:14px
+$font-size-byline:12px
+$font-size-subheader:20px
+$font-size-headline:30px
+
+$color-dark:#101010
+$color-darkest:#000000
+$color-background:#efefef
+$color-highlight:#e76b06
+
+$width-site:800px
+$width-content:$width-site - 100
+
+$height-playlist:200px
+
+$bg-main:url('../images/bg/bg_main_2.jpg')
+$bg-container:url('../images/bg/bg_container.png')
+
+$icon-facebook:url('../images/icon/icon_facebook.png')
+$icon-twitter:url('../images/icon/icon_twitter.png')
+$icon-googleplus:url('../images/icon/icon_googleplus.png')
+$icon-save:url('../images/icon/icon_save.png')
+$icon-play:url('../images/icon/icon_play.png')
+$icon-pause:url('../images/icon/icon_pause.png')
+$icon-sound:url('../images/icon/icon_sound.png')
+$icon-nosound:url('../images/icon/icon_nosound.png')
+
+$moods:time mood flow warmth
+$icons:facebook twitter googleplus save
+    
+//////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////// Mixins & Functions
+
+=content-template
+    width:$width-content
+    margin:20px 50px
+    float:left
+=hover-transition($time)
+    -webkit-transition: all $time ease-in-out
+    -moz-transition: all $time ease-in-out
+    -opera-transition: all $time ease-in-out
+=social-element
+    width:40px
+    height:40px
+    float:left
+    margin:0px 15px 10px 0px
+    border-radius:7px
+    background-size:cover
+    +hover-transition(0.3s)
+    &:hover
+        box-shadow:0px 0px 3px 3px $color-highlight
+=playlist-nav
+    width:20px
+    height:20px
+    float:left
+
+@each $mood in $moods
+    .mood-element-line_#{$mood}
+        width:60%
+        float:left
+        margin-top:4px
+    
+//////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////// General Styles
+
+body
+    font-family:$font-text
+    font-size:$font-size
+    color:$color-dark
+    background:$bg-main
+    background-size:cover
+    background-position:top center
+.container-fluid
+    width:$width-site
+    background:$color-background
+    border-radius:20px
+    margin:50px auto
+h1
+    font-family:$font-text-bold
+    font-size:$font-size-headline
+    +content-template
+h2
+    font-size:$font-size-subheader
+    +content-template
+    margin:0px 50px
+    
+//////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////// Bootstrap & Jquery UI Fixes
+    
+ul
+    padding:0px
+    margin:0px
+    list-style:none
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default
+    background:$color-highlight
+    cursor:pointer
+
+//////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////// Jukebox
+
+.playlist
+    +content-template
+    padding:20px 0px
+    background:$color-darkest
+    box-shadow:inset 0px 0px 10px 5px $color-background
+    height:$height-playlist
+    overflow-y:scroll
+    &-element
+        font-family:$font-headline-medium
+        color:$color-background
+        border-bottom:solid 1px $color-dark
+        float:left
+        width:96%
+        margin:0px 2%
+        padding:4px 7px 1px 7px
+        +hover-transition(0.3s)
+        &:hover
+            background:$color-background
+            color:$color-dark
+            text-decoration:none
+        &.active
+            color:$color-highlight
+    &-nav
+        +content-template
+        margin:0px 50px 20px 50px
+            
+//////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////// Mood Selectors
+
+.mood
+    +content-template
+    &-element
+        +content-template
+        margin:5px 0px
+        &-tag
+            font-family:$font-headline-medium
+            font-size:$font-size-subheader
+            text-shadow:1px 1px $color-highlight
+            width:20%
+            float:left
+            text-align:center
+            
+//////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////// Share & Save
+
+.social
+    +content-template
+    &-element_facebook
+        background:$icon-facebook
+        +social-element
+    &-element_twitter
+        background:$icon-twitter
+        +social-element
+    &-element_googleplus
+        background:$icon-googleplus
+        +social-element
+    &-element_save
+        background:$icon-save
+        +social-element
+        
+//////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////// 
+
