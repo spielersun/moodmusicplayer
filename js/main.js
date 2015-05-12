@@ -1,24 +1,3 @@
-
-$(document).ready(function () {
-    
-
-    //Specify Random Moods
-    var time_random = Math.floor((Math.random() * 20));
-    var mood_random = Math.floor((Math.random() * 10));
-    var flow_random = Math.floor((Math.random() * 5));
-    var warmth_random = Math.floor((Math.random() * 4));
-    
-    //Initiate Mood Selectors
-    $(".mood-element-line_time").slider({step:5, value:time_random*5});
-    $(".mood-element-line_mood").slider({step:10, value:mood_random*10});
-    $(".mood-element-line_flow").slider({step:20, value:flow_random*20});
-    $(".mood-element-line_warmth").slider({step:25, value:warmth_random*25});
-    
-    var mTime = $(".mood-element-line_time").slider("value");
-    var mMood = $(".mood-element-line_mood").slider("value");
-    var mFlow = $(".mood-element-line_flow").slider("value");
-    var mWarmth = $(".mood-element-line_warmth").slider("value");
-    
     //Sonnglist Json
     var json = [
         {
@@ -320,6 +299,17 @@ $(document).ready(function () {
         }
     ];
     
+    //$.getJSON("http://www.moodmusicplayer.com/songs?offset="+offset, function (songs) {
+    //    get(songs);
+    //});
+    //
+    //$.ajax({
+    //    type: 'GET',
+    //    url: 'http://www.moodmusicplayer.com/songs',
+    //    success: function(data){if(data.status != true){ } else { }},
+    //    error: function(){ }
+    //});
+
     //Print Songlist
     var printSonglist = function(sTime,sMood,sFlow,sWarmth){
         var songlist = "";
@@ -339,7 +329,27 @@ $(document).ready(function () {
             }
         });
         $("#jukebox").html(songlist);
-    }
+    };
+
+
+$(document).ready(function () {
+    
+    //Specify Random Moods
+    var time_random = Math.floor((Math.random() * 20));
+    var mood_random = Math.floor((Math.random() * 10));
+    var flow_random = Math.floor((Math.random() * 5));
+    var warmth_random = Math.floor((Math.random() * 4));
+    
+    //Initiate Mood Selectors
+    $(".mood-element-line_time").slider({step:5, value:time_random*5});
+    $(".mood-element-line_mood").slider({step:10, value:mood_random*10});
+    $(".mood-element-line_flow").slider({step:20, value:flow_random*20});
+    $(".mood-element-line_warmth").slider({step:25, value:warmth_random*25});
+    
+    var mTime = $(".mood-element-line_time").slider("value");
+    var mMood = $(".mood-element-line_mood").slider("value");
+    var mFlow = $(".mood-element-line_flow").slider("value");
+    var mWarmth = $(".mood-element-line_warmth").slider("value");
     
     printSonglist(mTime,mMood,mFlow,mWarmth);
 });
@@ -370,9 +380,46 @@ $(document).on('click', '.playlist-element', function(){
 		toggleDuration: true
 	});
     
-}); 
+});
 
+//Populate Songlist by Custom Variables
 $(document).on('click', '.mood-select', function (e) {
-    console.log('this is the click');
+    var mTime = $(".mood-element-line_time").slider("value");
+    var mMood = $(".mood-element-line_mood").slider("value");
+    var mFlow = $(".mood-element-line_flow").slider("value");
+    var mWarmth = $(".mood-element-line_warmth").slider("value");
+    
+    printSonglist(mTime,mMood,mFlow,mWarmth);
+    e.preventDefault();
+});
+
+//Save Cookie
+$(document).on('click', '.social-element_save', function (e) {
+    $('.social-element_save').hide();
+    $('.social-element_clear').show();
+    
+    var mTime = $(".mood-element-line_time").slider("value");
+    var mMood = $(".mood-element-line_mood").slider("value");
+    var mFlow = $(".mood-element-line_flow").slider("value");
+    var mWarmth = $(".mood-element-line_warmth").slider("value");
+    
+    $.cookie('cTime', 'mTime', { expires: 7, path: '/' });
+    $.cookie('cMood', 'mMood', { expires: 7, path: '/' });
+    $.cookie('cFlow', 'mFlow', { expires: 7, path: '/' });
+    $.cookie('cWarmth', 'mWarmth', { expires: 7, path: '/' });
+    
+    e.preventDefault();
+});
+
+//Clear Cookie
+$(document).on('click', '.social-element_clear', function (e) {
+    $('.social-element_clear').hide();
+    $('.social-element_save').show();
+    
+    $.removeCookie('cTime');
+    $.removeCookie('cMood');
+    $.removeCookie('cFlow');
+    $.removeCookie('cWarmth');
+    
     e.preventDefault();
 });
