@@ -1,0 +1,42 @@
+{
+  "product": "Mood Music Player",
+  "version": 1,
+  "releaseDate": "2015-05-12T00:00:00.000Z",
+  "song": [
+    {
+      "id": 1,
+      "artist": "John Doe",
+      "name": "Stay With Me"
+    },
+    {
+      "id": 2,
+      "artist": "John Doe",
+      "name": "Stay With Me"
+    },
+    {
+      "id": 2,
+      "artist": "John Doe",
+      "name": "Stay With Me"
+    },
+    {
+      "id": 2,
+      "artist": "John Doe",
+      "name": "Stay With Me"
+    },
+    {
+      "id": 2,
+      "artist": "John Doe",
+      "name": "Stay With Me"
+    },
+    {
+      "id": 2,
+      "artist": "John Doe",
+      "name": "Stay With Me"
+    },
+    {
+      "id": 2,
+      "artist": "John Doe",
+      "name": "Stay With Me"
+    }
+  ]
+}

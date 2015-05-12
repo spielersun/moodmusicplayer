@@ -139,7 +139,7 @@ ul
             background:$color-background
             color:$color-dark
             text-decoration:none
-        &.active
+        &.active,&:focus
             color:$color-highlight
     &-nav
         +content-template
@@ -151,6 +151,7 @@ ul
 
 .mood
     +content-template
+    margin-bottom:0px
     &-element
         +content-template
         margin:5px 0px
@@ -161,7 +162,26 @@ ul
             width:20%
             float:left
             text-align:center
-            
+    &-select
+        +content-template    
+        font-family:$font-headline-medium
+        font-size:$font-size-subheader
+        color:$color-background
+        background:$color-highlight
+        width:120px
+        float:left
+        text-align:center
+        text-shadow:1px 1px $color-highlight
+        border:solid 1px $color-dark
+        padding:5px 20px 3px 20px
+        margin-top:10px
+        margin-left:($width-site - 120) / 2
+        border-radius:7px
+        +hover-transition(0.3s)
+        &:hover,&:focus
+            background:$color-background
+            color:$color-dark
+            text-decoration:none    
 //////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////// Share & Save
